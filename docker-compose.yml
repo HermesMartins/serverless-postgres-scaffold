@@ -1,0 +1,35 @@
+version: "3.3"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    restart: on-failure
+    environment:
+      POSTGRES_DB: scaffold
+      POSTGRES_PASSWORD: secret
+    networks:
+      - backend
+  serverless:
+    container_name: serverless
+    build: .
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    restart: on-failure
+    volumes:
+      - ~/.aws:/.aws
+      - .:/src
+    depends_on:
+      - postgres
+    networks:
+      - backend
+
+networks:
+  backend: 
+    driver: bridge

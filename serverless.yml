@@ -1,0 +1,15 @@
+service: serverless-scaffold
+
+frameworkVersion: '2'
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+
+plugins:
+  - serverless-offline
+  
+functions:
+  - ${file(./src/services/users/endpoints/_functions.yml)}

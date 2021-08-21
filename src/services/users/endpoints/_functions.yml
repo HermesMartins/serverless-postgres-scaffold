@@ -1,0 +1,39 @@
+userCreate:
+  handler: ./src/services/users/endpoints/create.handler
+  events:
+    - http:
+        path: /users
+        method: post
+        cors: true
+
+userFindAll:
+  handler: ./src/services/users/endpoints/findAll.handler
+  events:
+    - http:
+        path: /users
+        method: get
+        cors: true
+
+userFindOne:
+  handler: ./src/services/users/endpoints/findOne.handler
+  events:
+    - http:
+        path: /users/{userId}
+        method: get
+        cors: true          
+
+userUpdate:
+  handler: ./src/services/users/endpoints/update.handler
+  events:
+    - http:
+        path: /users/{userId}
+        method: put
+        cors: true
+
+userDelete:
+  handler: ./src/services/users/endpoints/delete.handler
+  events:
+    - http:
+        path: /users/{userId}
+        method: delete
+        cors: true                    
